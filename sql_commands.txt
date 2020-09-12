@@ -1,0 +1,231 @@
+CREATE TABLE season
+(season_id INT NOT NULL,
+name Text,
+PRIMARY KEY (season_id)
+);
+
+CREATE TABLE month
+(month_id INT NOT NULL,
+name Text,
+season_id INT REFERENCES season(season_id),
+PRIMARY KEY (month_id)
+);
+
+
+CREATE TABLE vegetables
+(veg_id INT NOT NULL,
+name Text,
+sunlight Text,
+plant_spacing Text,
+row_spacing Text,
+PRIMARY KEY (veg_id)
+);
+
+CREATE TABLE starts
+(veg_id INT NOT NULL REFERENCES vegetables(veg_id),
+month_id INT NOT NULL REFERENCES month(month_id),
+start_date INT,
+through_date INT,
+best Text,
+PRIMARY KEY (veg_id, month_id)
+);
+
+CREATE TABLE seed_indoor
+(veg_id INT NOT NULL REFERENCES vegetables(veg_id),
+month_id INT NOT NULL REFERENCES month(month_id),
+version Text NOT NULL,
+start_date INT,
+through_date INT,
+best Text,
+PRIMARY KEY (veg_id, month_id, version)
+);
+
+CREATE TABLE seed_outdoor
+(veg_id INT NOT NULL REFERENCES vegetables(veg_id),
+month_id INT NOT NULL REFERENCES month(month_id),
+version Text NOT NULL,
+start_date INT,
+through_date INT,
+best Text,
+PRIMARY KEY (veg_id, month_id, version)
+);
+
+CREATE TABLE harvest
+(veg_id INT NOT NULL REFERENCES vegetables(veg_id),
+season_id INT NOT NULL REFERENCES season(season_id),
+PRIMARY KEY (veg_id, season_id)
+);
+
+SELECT v.name
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND m.name = 'March';
+
+SELECT v.name
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND m.name = 'June';
+
+SELECT v.sunlight
+FROM vegetables as v
+WHERE v.name = 'Tomatoes';
+
+SELECT v.sunlight
+FROM vegetables as v
+WHERE v.name = 'Kale';
+
+SELECT Count(*)
+FROM vegetables as v, seed_indoor as si, month as m
+WHERE v.veg_id = si.veg_id AND si.month_id = m.month_id AND m.name = 'February';
+
+SELECT v.name
+FROM vegetables as v, seed_indoor as si, month as m
+WHERE v.veg_id = si.veg_id AND si.month_id = m.month_id AND m.name = 'January';
+
+SELECT s.name
+FROM vegetables as v, harvest as h, season as s
+WHERE v.veg_id = h.veg_id AND h.season_id = s.season_id AND v.name = 'Carrots';
+
+SELECT v.name
+FROM vegetables as v, harvest as h, season as s
+WHERE v.veg_id = h.veg_id AND h.season_id = s.season_id AND s.name = 'Fall';
+
+SELECT v.name
+FROM vegetables as v, harvest as h, season as s
+WHERE v.veg_id = h.veg_id AND h.season_id = s.season_id
+GROUP BY v.name
+HAVING COUNT(*) = 4;
+
+SELECT v.name
+FROM vegetables as v, harvest as h, season as s
+WHERE v.veg_id = h.veg_id AND h.season_id = s.season_id AND s.name = 'Summer' AND v.veg_id IN (
+SELECT v.veg_id
+FROM vegetables as v, harvest as h, season as s
+WHERE v.veg_id = h.veg_id AND h.season_id = s.season_id
+GROUP BY v.veg_id
+HAVING COUNT(*) = 1);
+
+
+SELECT m.month_id
+FROM vegetables as v, seed_indoor as si, month as m
+WHERE v.veg_id = si.veg_id AND si.month_id = m.month_id AND si.best = 'Yes' AND v.name = 'Arugula'
+
+SELECT m.month_id
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND so.best = 'Yes' AND v.name = 'Arugula'
+
+SELECT start_month
+FROM (SELECT m.month_id as start_month
+FROM vegetables as v, starts as s, month as m
+WHERE v.veg_id = s.veg_id AND s.month_id = m.month_id AND s.best = 'Yes' AND v.name = 'Arugula') as ugh;
+
+SELECT m.month_id 
+FROM vegetables as v, seed_indoor as si, month as m
+WHERE v.veg_id = si.veg_id AND si.month_id = m.month_id AND si.best = 'Yes' AND v.name = 'Peppers'
+
+
+SELECT m.month_id
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND so.best = 'Yes' AND v.name = 'Peppers'
+
+SELECT si_month_name, so_month_name, s_month_name
+FROM 
+
+(SELECT v.veg_id, m.name as si_month_name 
+FROM vegetables as v, seed_indoor as si, month as m
+WHERE v.veg_id = si.veg_id AND si.month_id = m.month_id AND si.best = 'Yes' AND v.name = 'Peppers') as si_month_table FULL OUTER JOIN 
+
+(SELECT v.veg_id, m.name as so_month_name
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND so.best = 'Yes' AND v.name = 'Peppers') as so_month_table ON si_month_table.veg_id = so_month_table.veg_id FULL OUTER JOIN
+
+(SELECT v.veg_id, m.name as s_month_name
+FROM vegetables as v, starts as s, month as m
+WHERE v.veg_id = s.veg_id AND s.month_id = m.month_id AND s.best = 'Yes' AND v.name = 'Peppers') as s_month_table ON si_month_table.veg_id = s_month_table.veg_id;
+
+SELECT si_month_name, so_month_name, s_month_name
+FROM 
+
+(SELECT v.veg_id, m.name as si_month_name 
+FROM vegetables as v, seed_indoor as si, month as m
+WHERE v.veg_id = si.veg_id AND si.month_id = m.month_id AND si.best = 'Yes' AND v.name = 'Arugula') as si_month_table FULL OUTER JOIN 
+
+(SELECT v.veg_id, m.name as so_month_name
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND so.best = 'Yes' AND v.name = 'Arugula') as so_month_table ON si_month_table.veg_id = so_month_table.veg_id FULL OUTER JOIN
+
+(SELECT v.veg_id, m.name as s_month_name
+FROM vegetables as v, starts as s, month as m
+WHERE v.veg_id = s.veg_id AND s.month_id = m.month_id AND s.best = 'Yes' AND v.name = 'Arugula') as s_month_table ON si_month_table.veg_id = s_month_table.veg_id;
+
+
+SELECT * FROM A
+FULL [OUTER] JOIN B on A.id = B.id;
+
+
+SELECT v.veg_id, si.month_id
+FROM vegetables as v, starts as si
+WHERE v.veg_id = si.veg_id AND si.best = 'Yes' AND v.name = 'Arugula'
+
+SELECT v.veg_id, si.month_id
+FROM vegetables as v, seed_indoor as si
+WHERE v.veg_id = si.veg_id AND si.best = 'Yes' AND v.name = 'Arugula'
+
+
+SELECT m.month_id as seed_outdoor_month_arug
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND so.best = 'Yes' AND v.name = 'Arugula'
+UNION 
+SELECT m.month_id as seed_outdoor_month_pars
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND so.best = 'Yes' AND v.name = 'Broccoli'
+
+SELECT v.row_spacing
+FROM vegetables as v
+WHERE v.name = 'Parsley';
+
+SELECT v.plant_spacing
+FROM vegetables as v
+WHERE v.name = 'Green onions';
+
+
+SELECT v.name
+FROM vegetables as v
+WHERE v.row_spacing = '12-18 inches';
+
+SELECT v.name
+FROM vegetables as v
+WHERE v.plant_spacing = '5 inches';
+
+SELECT v.name
+FROM vegetables as v, seed_outdoor as so
+WHERE v.veg_id = so.veg_id
+GROUP BY v.name
+HAVING COUNT(*) = 12
+UNION
+SELECT v.name
+FROM vegetables as v, starts as s
+WHERE v.veg_id = s.veg_id
+GROUP BY v.name
+HAVING COUNT(*) = 12;
+
+SELECT DISTINCT v.name
+FROM vegetables as v, seed_indoor as si
+WHERE v.veg_id = si.veg_id AND v.veg_id NOT IN (
+SELECT v.veg_id
+FROM vegetables as v, seed_outdoor as so
+WHERE v.veg_id = so.veg_id)
+
+SELECT v.name
+FROM vegetables as v, seed_indoor as si, month as m
+WHERE v.veg_id = si.veg_id AND si.month_id = m.month_id AND m.name = 'November'
+UNION
+SELECT v.name
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND m.name = 'November'
+UNION
+SELECT v.name
+FROM vegetables as v, starts as s, month as m
+WHERE v.veg_id = s.veg_id AND s.month_id = m.month_id AND m.name = 'November'
+
+SELECT m.name
+FROM vegetables as v, seed_outdoor as so, month as m
+WHERE v.veg_id = so.veg_id AND so.month_id = m.month_id AND v.name = 'Carrots'

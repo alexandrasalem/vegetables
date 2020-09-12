@@ -1,0 +1,57 @@
+Veg,Veg_clean,Version,VegID,MonthID,Start_day,Through,Best
+Artichoke,Artichoke,,,1,1,,
+Arugula,Arugula,,,1,1,,
+Endive,Endive,,,1,1,,
+Beans (Fava),Fava beans,,,1,1,,
+Kale,Kale,,,1,1,,
+Leeks,Leeks,,,1,1,,
+Lettuce,Lettuce,,,1,1,,
+Mustard,Mustard greens,,,1,1,,
+Onions,Onions,,,1,1,,Yes
+Peas,Peas,,,1,1,,
+Scallions,Green onions,,,1,1,,
+Spinach,Spinach,,,1,1,,
+Artichoke,Artichoke,,,2,1,,
+Asparagus,Asparagus,,,2,1,,
+Broccoli,Broccoli,,,2,1,,
+Cabbage,Cabbage (early types),,,2,1,,
+Cabbage,Cabbage (late types),,,2,1,,
+Cauliflower,Cauliflower,,,2,1,,
+Celeriac,Celeriac,,,2,1,,
+Celery,Celery,,,2,1,,
+Chard,Chard,,,2,1,,
+Chives,Chives,,,2,1,,
+Choi,Choi,,,2,1,,
+Eggplant 2/15*,Eggplant,,,2,15,,Yes
+Endive,Endive,,,2,1,,
+Kale,Kale,,,2,1,,
+Kohlrabi,Kohlrabi,,,2,1,,
+Leeks*,Leeks,,,2,1,,Yes
+Lettuce,Lettuce,,,2,1,,
+Onion*,Onions,,,2,1,,Yes
+Parsley,Parsley,,,2,1,,
+Peppers 2/15*,Peppers,,,2,15,,Yes
+Tomatillo,Tomatillos,,,2,1,,
+Tomatoes 2/15*,Tomatoes,,,2,15,,Yes
+Broccoli,Broccoli,,,3,1,,
+Cabbage,Cabbage (early types),,,3,1,,
+Cabbage,Cabbage (late types),,,3,1,,
+Cauliflower,Cauliflower,,,3,1,,
+Celeriac,Celeriac,,,3,1,,
+Celery,Celery,,,3,1,,
+Eggplant*,Eggplant,,,3,1,,Yes
+Leeks,Leeks,,,3,1,,
+Lettuce,Lettuce,,,3,1,,
+Peppers*,Peppers,,,3,1,,Yes
+Scallions,Green onions,,,3,1,,
+Tomatoes*,Tomatoes,,,3,1,,Yes
+Tomatillos*,Tomatillos,,,3,1,,Yes
+Basil,Basil,,,4,25,,
+Cucumber,Cucumbers,,,4,25,,
+Melon,Melons,,,4,25,,
+Pumpkin,Pumpkins,,,4,25,,
+"Squash, summer",Squash (summer),,,4,25,,
+"Squash, winter",Squash (winter),,,4,25,,
+Basil,Basil,,,5,1,,
+Cucumber,Cucumbers,,,5,1,,
+Melon,Melons,,,5,1,,

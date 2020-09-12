@@ -1,0 +1,60 @@
+veg_id,name,sunlight,plant_spacing,row_spacing
+1,Artichoke,Full sun,24 inches,3-6 feet
+2,Arugula,Full sun,,
+3,Asian greens,Full sun,6-12 inches,18-24 inches
+4,Asparagus,Full sun,1 crown/foot,4-6 feet
+5,Basil,Full sun,,
+6,Beans (bush or pole),Full sun,"bush, pole: 2-3",bush: 18-36 inches pole: 3-4 feet
+7,Fava beans,Full sun,3-5 inches,12-30 inches
+8,Beets,Full sun,Thin to 3-4 inches,16 inches
+9,Broccoli,Full sun,12-24 inches,18-36 inches
+10,Broccoli raab,Full sun,,
+11,Brussel sprouts,Full sun,24 inches,24 inches
+12,Cabbage (early types),Full sun,18-24 inches,2-4 feet
+13,Cabbage (late types),Full sun,18-24 inches,2-4 feet
+14,Carrots,Full sun,Thin to 1-3 inches,12-16 inches
+15,Cauliflower,Full sun,12-24 inches,30 inches
+16,Celeriac,Full sun,,
+17,Celery,Full sun,12 inches,18 inches
+18,Chard,Full sun,2-3 inches,18-24 inches
+19,Chives,Full sun,,
+20,Choi,Full sun,,
+21,Cilantro,Full sun,,
+22,Collards,Full sun,12-16 inches,24-36 inches
+23,Corn,Full sun,Thin to 8-12 inches,24-30 inches
+24,Cucumbers,Full sun,Hills 3 feet,3 feet
+25,Dill,Full sun,,
+26,Eggplant,Full sun,12-18 inches,2-3 feet
+27,Endive,Full sun,,
+28,Fennel,Full sun,,
+29,Garlic,Full sun,4-6 inches,12-18 inches
+30,Green onions,Full sun,2 inches,12-18 inches
+31,Jerusalem artichoke,Full sun,,
+32,Kale,Full sun,18-24 inches,24 inches
+33,Kohlrabi,Full sun,3-8 inches,12-18 inches
+34,Leeks,Full sun,4-5 inches,12-18 inches
+35,Lettuce,Partial sun,10-14 inches,16-18 inches
+36,Melons,Full sun,3-4 feet,5-6 feet
+37,Mustard greens,Full sun,,
+38,Onions,Full sun,5 inches,16-24 inches
+39,Oregano,Full sun,,
+40,Parsley,Full sun,6-8 inches,12-18 inches
+41,Parsnips,Full sun,Thin to 3-4 inches,12-18 inches
+42,Peas,Full sun,1 inches,18-24 inches
+43,Peppers,Full sun,12-18 inches,24-30 inches
+44,Potatoes,Full sun,12 inches 4-6 inches deep,12-24 inches
+45,Pumpkins,Full sun,6-8 feet,3-4 feet
+46,Radicchio,Full sun,,
+47,Radishes,Full sun,Thin to 1-2 inches,8-12 inches
+48,Rosemary,Full sun,,
+49,Rutabaga,Full sun,,
+50,Sage,Full sun,,
+51,Salad greens,Partial sun,,
+52,Shallots,Full sun,4-6 inches,12-18 inches
+53,Sorrel,Full sun,,
+54,Spinach,Full sun,Thin to 3 inches,12-18 feet'
+55,Squash (summer),Full sun,"24 inches bush, 36 inches vine",One per bed
+56,Squash (winter),Full sun,"24 inches bush, 36 inches vine",One per bed
+57,Tomatillos,Full sun,,
+58,Tomatoes,Full sun,"Determinate: 18-24 inches, Indeterminate: 20-30 inches","12-16 inches, 2-3 feet"
+59,Turnips,Full sun,,
